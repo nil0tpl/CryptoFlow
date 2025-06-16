@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar for modal */
+#modal::-webkit-scrollbar {
+  width: 10px;
+}
+#modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+#modal::-webkit-scrollbar-thumb {
+  background-color: #9333ea; /* Tailwind purple-600 */
+  border-radius: 8px;
+  border: 2px solid #1e293b; /* match modal background */
+}
+#modal::-webkit-scrollbar-thumb:hover {
+  background-color: #7e22ce; /* Tailwind purple-700 */
+}
+
+/* For Firefox */
+#modal {
+  scrollbar-color: #9333ea transparent;
+  scrollbar-width: thin;
+}
