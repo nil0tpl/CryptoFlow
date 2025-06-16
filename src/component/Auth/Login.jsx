@@ -37,7 +37,8 @@ export default function LoginForm() {
 
 		const updatedUser = { ...form, loginState: true };
 		setForm(updatedUser);
-		alert('Logged in Successfully!');
+		alert('Logged in Successfully!  :)  Redirecting...');
+		location.reload();
 		updateForm(updatedUser);
 		setName(form.username);
 		setShowAuth(false);
