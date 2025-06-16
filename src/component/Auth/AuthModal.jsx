@@ -12,7 +12,6 @@ export default function AuthModal() {
 	useEffect(() => {
 		const storedForm = JSON.parse(localStorage.getItem('auth')) || {};
 		setForm(storedForm);
-		document.title = `CryptoFlow - Auth`
 	}, []);
 	
 	useEffect(()=>{

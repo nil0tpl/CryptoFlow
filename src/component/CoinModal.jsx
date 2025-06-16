@@ -15,8 +15,8 @@ export default function CoinModal() {
 	});
 
 	useEffect(()=>{
-		document.title = `CryptoFlow - ${coinData.name}`;
-	}, []);
+		document.title = `CryptoFlow - ${coinData.name ? coinData.name : 'coin'}`;
+	}, [coinData]);
 
 	const fetchCoinDetails = async () => {
 		try {
