@@ -86,6 +86,10 @@ export default function MainContent() {
 	useEffect(() => {
 		fetchBaseData();
 	}, [pageState.page, value]);
+	
+	useEffect(()=>{
+		document.title = `CryptoFlow`
+	});
 
 	if (hasError.error === true) {
 		return (

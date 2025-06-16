@@ -24,10 +24,6 @@ export default function Navbar() {
         updateForm(form);
     }, [form]);
 
-    useEffect(()=>{
-        document.title = `CryptoFlow`
-    });
-
 return (
 <>
     <header className="border-b border-slate-700/50 backdrop-blur-sm bg-slate-900/50 sticky top-0 z-50">
