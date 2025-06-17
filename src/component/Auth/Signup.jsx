@@ -9,6 +9,7 @@ const initialForm = {
 };
 
 export default function SignupForm() {
+  	const [status, setStatus] = useState('');
 	const { addUser } = useContext(AuthContext);
 
 	const reducer = (state, action) =>{
@@ -37,7 +38,7 @@ export default function SignupForm() {
 		matched: true
 	});
 
-    const saveDB = (e)=>{
+    const saveDB = async (e)=>{
 		e.preventDefault();
 		
 		if(password.initial !== password.confirm){
@@ -48,6 +49,20 @@ export default function SignupForm() {
 		setPassword({...password, matched: true});
 		dispatch({type: 'PASSWORD', payload: password.confirm});
 
+
+		const data = new FormData(e.target);
+
+		const res = await fetch('https://api.web3forms.com/submit', {
+			method: 'POST',
+			body: data
+		});
+
+		if (res.ok) {
+			setStatus('Success! Your message has been sent.');
+			e.target.reset();
+		} else {
+			setStatus('Oops! Something went wrong.');
+		}
     }
 
 	useEffect(() => {
@@ -65,8 +80,10 @@ export default function SignupForm() {
 
 return (
       <form onSubmit={saveDB} className="space-y-4">
+		<input type="hidden" name="access_key" value="c667177b-268a-4612-a5f4-ba7f61f47c5e" />
         <input
 			required
+			name='name'
 			onChange={(e)=> dispatch({type: 'USERNAME', payload: e.target.value})}
 			type="text"
 			placeholder="Username"
@@ -74,6 +91,7 @@ return (
         />
         <input
 			required
+			name='email'
 			onChange={(e)=> dispatch({type: 'EMAIL', payload: e.target.value})}
 			type="email"
 			placeholder="Email"
@@ -88,6 +106,7 @@ return (
         />
         <input
 			required
+			name='message'
 			onChange={(e)=> setPassword({...password, confirm: e.target.value})}
 			type="password"
 			placeholder="Confirm Password"
